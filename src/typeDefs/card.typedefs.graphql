@@ -9,11 +9,91 @@ type Rarity {
   max_star_rank: Int!
 }
 
+type Skill {
+  id: ID!
+  skill_name: String!
+  explain: String!
+  skill_type: String!
+  judge_type: Int!
+  skill_trigger_type: Int!
+  skill_trigger_value: Int!
+  cutin_type: Int!
+  condition: Int!
+  value: Int!
+  value_2: Int!
+  value_3: Int!
+  max_chance: Int!
+  max_duration: Int!
+  explain_en: String!
+  skill_type_id: Int!
+  effect_length: [Int!]!
+  proc_chance: [Int!]!
+}
+
+type LeadSkill {
+  id: ID!
+  name: String!
+  explain: String!
+  type: Int!
+  need_cute: Int!
+  need_cool: Int!
+  need_passion: Int!
+  target_attribute: String!
+  target_param: String!
+  up_type: Int!
+  up_value: Int!
+  special_id: Int!
+  need_chara: String!
+  target_attribute_2: String!
+  target_param_2: String!
+  up_type_2: Int!
+  up_value_2: Int!
+  need_skill_variation: Int!
+  param_limit: Int!
+  explain_en: String!
+}
+
+type Chara {
+  chara_id: ID!
+  name: String!
+  name_kana: String!
+  age: Int!
+  home_town: Int!
+  height: Int!
+  weight: Int!
+  body_size_1: Int!
+  body_size_2: Int!
+  body_size_3: Int!
+  birth_month: Int!
+  birth_day: Int!
+  constellation: Int!
+  blood_type: Int!
+  hand: Int!
+  favorite: String!
+  voice: String!
+  model_height_id: Int!
+  model_weight_id: Int!
+  model_bust_id: Int!
+  model_skin_id: Int!
+  spine_size: Int!
+  personality: Int!
+  type: String!
+  base_card_id: Int!
+  bus_vo_value: Int!
+  bus_da_value: Int!
+  bus_vi_value: Int!
+  kanji_spaced: String!
+  kana_spaced: String!
+  conventional: String!
+  valist: [String]
+  icon_image_ref: String!
+}
+
 type CharaRef {
   ref: String!
 }
 
-type Card {
+type CardSummary {
   id: ID!
   chara_id: ID!
   attribute: Int!
@@ -40,6 +120,59 @@ type Card {
   ref: String!
 }
 
+type CardDetail {
+  id: ID!
+  name: String!
+  chara_id: ID!
+  rarity: Rarity!
+  attribute: String!
+  title_flag: Int!
+  evolution_id: Int!
+  series_id: Int!
+  pose: Int!
+  place: Int!
+  evolution_type: Int!
+  album_id: Int!
+  open_story_id: Int!
+  open_dress_id: Int!
+  skill_id: Int!
+  leader_skill_id: Int!
+  grow_type: Int!
+  hp_min: Int!
+  vocal_min: Int!
+  dance_min: Int!
+  visual_min: Int!
+  hp_max: Int!
+  vocal_max: Int!
+  dance_max: Int!
+  visual_max: Int!
+  bonus_hp: Int!
+  bonus_vocal: Int!
+  bonus_dance: Int!
+  bonus_visual: Int!
+  solo_live: Int!
+  star_lesson_type: Int!
+  disp_order: Int!
+  chara: Chara!
+  has_spread: Boolean!
+  has_sign: Boolean!
+  name_only: String!
+  title: String
+  skill: Skill
+  lead_skill: LeadSkill
+  overall_min: Int!
+  overall_max: Int!
+  overall_bonus: Int!
+  valist: [String]
+  best_stat: Int!
+  sign_image_ref: String
+  spread_image_ref: String
+  card_image_ref: String!
+  sprite_image_ref: String!
+  icon_image_ref: String!
+}
+
 type Query {
-  cards: [Card!]!
+  cards: [CardSummary!]!
+  card(id: ID!): CardDetail
 }

@@ -1,0 +1,45 @@
+type Rarity {
+  rarity: Int!
+  base_max_level: Int!
+  add_max_level: Int!
+  max_love: Int!
+  base_give_money: Int!
+  base_give_exp: Int!
+  add_param: Int!
+  max_star_rank: Int!
+}
+
+type CharaRef {
+  ref: String!
+}
+
+type Card {
+  id: ID!
+  chara_id: ID!
+  attribute: Int!
+  has_spread: Boolean!
+  pose: Int!
+  title: String
+  name_only: String!
+  hp_min: Int!
+  hp_max: Int!
+  vocal_min: Int!
+  vocal_max: Int!
+  visual_min: Int!
+  visual_max: Int!
+  dance_min: Int!
+  dance_max: Int!
+  bonus_hp: Int!
+  bonus_dance: Int!
+  bonus_vocal: Int!
+  bonus_visual: Int!
+  evolution_id: Int!
+  rarity_dep: Rarity!
+  conventional: String!
+  chara: CharaRef!
+  ref: String!
+}
+
+type Query {
+  cards: [Card!]!
+}

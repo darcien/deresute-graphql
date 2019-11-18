@@ -1,3 +1,50 @@
+# Character
+type CharaSummary {
+  chara_id: ID!
+  conventional: String!
+  kanji_spaced: String!
+  kana_spaced: String!
+  cards: [Int!]!
+  ref: String
+}
+
+type CharaDetail {
+  chara_id: ID!
+  name: String!
+  name_kana: String!
+  age: Int!
+  home_town: Int!
+  height: Int!
+  weight: Int!
+  body_size_1: Int!
+  body_size_2: Int!
+  body_size_3: Int!
+  birth_month: Int!
+  birth_day: Int!
+  constellation: Int!
+  blood_type: Int!
+  hand: Int!
+  favorite: String!
+  voice: String!
+  model_height_id: Int!
+  model_weight_id: Int!
+  model_bust_id: Int!
+  model_skin_id: Int!
+  spine_size: Int!
+  personality: Int!
+  type: String!
+  base_card_id: Int!
+  bus_vo_value: Int!
+  bus_da_value: Int!
+  bus_vi_value: Int!
+  kanji_spaced: String!
+  kana_spaced: String!
+  conventional: String!
+  valist: [String]
+  icon_image_ref: String!
+}
+
+# Card
 type Rarity {
   rarity: Int!
   base_max_level: Int!
@@ -51,42 +98,6 @@ type LeadSkill {
   need_skill_variation: Int!
   param_limit: Int!
   explain_en: String!
-}
-
-type Chara {
-  chara_id: ID!
-  name: String!
-  name_kana: String!
-  age: Int!
-  home_town: Int!
-  height: Int!
-  weight: Int!
-  body_size_1: Int!
-  body_size_2: Int!
-  body_size_3: Int!
-  birth_month: Int!
-  birth_day: Int!
-  constellation: Int!
-  blood_type: Int!
-  hand: Int!
-  favorite: String!
-  voice: String!
-  model_height_id: Int!
-  model_weight_id: Int!
-  model_bust_id: Int!
-  model_skin_id: Int!
-  spine_size: Int!
-  personality: Int!
-  type: String!
-  base_card_id: Int!
-  bus_vo_value: Int!
-  bus_da_value: Int!
-  bus_vi_value: Int!
-  kanji_spaced: String!
-  kana_spaced: String!
-  conventional: String!
-  valist: [String]
-  icon_image_ref: String!
 }
 
 type CharaRef {
@@ -153,7 +164,7 @@ type CardDetail {
   solo_live: Int!
   star_lesson_type: Int!
   disp_order: Int!
-  chara: Chara!
+  chara: CharaDetail!
   has_spread: Boolean!
   has_sign: Boolean!
   name_only: String!
@@ -175,4 +186,6 @@ type CardDetail {
 type Query {
   cards: [CardSummary!]!
   card(id: ID!): CardDetail
+  chars: [CharaSummary!]!
+  char(id: ID!): CharaDetail
 }

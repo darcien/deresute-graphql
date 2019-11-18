@@ -77,7 +77,7 @@ type Skill {
   proc_chance: [Int!]!
 }
 
-type LeadSkill {
+type LeaderSkill {
   id: ID!
   name: String!
   explain: String!
@@ -170,7 +170,7 @@ type CardDetail {
   name_only: String!
   title: String
   skill: Skill
-  lead_skill: LeadSkill
+  lead_skill: LeaderSkill
   overall_min: Int!
   overall_max: Int!
   overall_bonus: Int!
@@ -188,4 +188,6 @@ type Query {
   card(id: ID!): CardDetail
   chars: [CharaSummary!]!
   char(id: ID!): CharaDetail
+  skill(id: ID!): Skill
+  leaderSkill(id: ID!): LeaderSkill
 }

@@ -13,6 +13,37 @@ type Info {
   truth_version: String!
 }
 
+type Event {
+  id: ID!
+  name: String!
+  start_date: Int!
+  end_date: Int!
+  result_end_date: Int!
+}
+
+type GachaRate {
+  r: Int!
+  sr: Int!
+  ssr: Int!
+}
+
+type Gacha {
+  id: ID!
+  name: String!
+  start_date: Int!
+  end_date: Int!
+  type: Int!
+  subtype: Int!
+  rates: GachaRate
+}
+
+type Happening {
+  events: [Event!]!
+  gachas: [Gacha!]!
+}
+
 type Query {
   info: Info!
+  happeningNow: Happening
+  happening(timestamp: Int!): Happening
 }

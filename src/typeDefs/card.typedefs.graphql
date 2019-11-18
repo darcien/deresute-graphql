@@ -26,10 +26,10 @@ type CharaDetail {
   hand: Int!
   favorite: String!
   voice: String!
-  model_height_id: Int!
-  model_weight_id: Int!
-  model_bust_id: Int!
-  model_skin_id: Int!
+  model_height_id: ID!
+  model_weight_id: ID!
+  model_bust_id: ID!
+  model_skin_id: ID!
   spine_size: Int!
   personality: Int!
   type: String!
@@ -72,7 +72,7 @@ type Skill {
   max_chance: Int!
   max_duration: Int!
   explain_en: String!
-  skill_type_id: Int!
+  skill_type_id: ID!
   effect_length: [Int!]!
   proc_chance: [Int!]!
 }
@@ -89,7 +89,7 @@ type LeaderSkill {
   target_param: String!
   up_type: Int!
   up_value: Int!
-  special_id: Int!
+  special_id: ID!
   need_chara: String!
   target_attribute_2: String!
   target_param_2: String!
@@ -124,7 +124,7 @@ type CardSummary {
   bonus_dance: Int!
   bonus_vocal: Int!
   bonus_visual: Int!
-  evolution_id: Int!
+  evolution_id: ID!
   rarity_dep: Rarity!
   conventional: String!
   chara: CharaRef!
@@ -138,16 +138,16 @@ type CardDetail {
   rarity: Rarity!
   attribute: String!
   title_flag: Int!
-  evolution_id: Int!
-  series_id: Int!
+  evolution_id: ID!
+  series_id: ID!
   pose: Int!
   place: Int!
   evolution_type: Int!
-  album_id: Int!
-  open_story_id: Int!
-  open_dress_id: Int!
-  skill_id: Int!
-  leader_skill_id: Int!
+  album_id: ID!
+  open_story_id: ID!
+  open_dress_id: ID!
+  skill_id: ID!
+  leader_skill_id: ID!
   grow_type: Int!
   hp_min: Int!
   vocal_min: Int!

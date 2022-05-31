@@ -1,4 +1,6 @@
-# Character
+import { gql } from "https://deno.land/x/oak_graphql@0.6.3/mod.ts";
+
+export const typeDefs = gql`
 type CharaSummary {
   chara_id: ID!
   conventional: String!
@@ -183,6 +185,50 @@ type CardDetail {
   icon_image_ref: String!
 }
 
+type Info {
+  """
+  The major version of the API as an int. Assume a value of 1 if it doesn't exist.
+  """
+  api_major: Int
+  """
+  The minor revision of the API as an int. Assume a value of 1 if it doesn't exist. When new things are added (that don't break the API for existing users), the revision will be bumped.
+  """
+  api_revision: Int
+  """
+  The version game data that ssdb derives data from.
+  """
+  truth_version: String!
+}
+
+type Event {
+  id: ID!
+  name: String!
+  start_date: Int!
+  end_date: Int!
+  result_end_date: Int!
+}
+
+type GachaRate {
+  r: Int!
+  sr: Int!
+  ssr: Int!
+}
+
+type Gacha {
+  id: ID!
+  name: String!
+  start_date: Int!
+  end_date: Int!
+  type: Int!
+  subtype: Int!
+  rates: GachaRate
+}
+
+type Happening {
+  events: [Event!]!
+  gachas: [Gacha!]!
+}
+
 type Query {
   cards: [CardSummary!]!
   card(id: ID!): CardDetail
@@ -190,4 +236,9 @@ type Query {
   char(id: ID!): CharaDetail
   skill(id: ID!): Skill
   leaderSkill(id: ID!): LeaderSkill
+
+  info: Info!
+  happeningNow: Happening
+  happening(timestamp: Int!): Happening
 }
+`;
